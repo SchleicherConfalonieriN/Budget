@@ -1,4 +1,19 @@
 import UserModel from "../models/UserModel.js"
+import moment from 'moment';
+import jwt from 'jwt-simple';
+
+
+
+const CreateToken = (user) => {
+
+    const payload ={
+        usuarId : user.Id,
+        createdAt : moment().unix(),
+        expiredAt : moment().add(5,'minutes').unix()
+    };
+    return jwt.encode(payload,"frase secreta");
+}
+
 
 
 
@@ -17,12 +32,13 @@ export const Register= async (req,res)=>{
 
 
 export const Login = async (req,res)=>{
-    try{
-        const user = await UserModel.findAll({ 
-            where:{ Email:req.params.Email }
-    })
-    res.json(user[0])
-    }   catch (error) {
-        res.json( {message: error.message} )
+    const user = await UserModel.findOne({where:{
+        Email: req.body.Email,
+        Password: req.body.Password
+    }})
+    if (user){
+        res.json(CreateToken(user));
+    }else{
+        res.json({error: 'wrong email or password'});
     }
 }
