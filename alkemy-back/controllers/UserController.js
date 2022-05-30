@@ -1,17 +1,6 @@
 import UserModel from "../models/UserModel.js"
 
 
-//all users
-export const getAllUser = async (req,res) =>{
-    try{
-        const users = await UserModel.findAll();
-        res.json(user)
-    } catch(error){
-        res.json ({message :error.message})
-    }
-}
-
-
 
 //register
 
