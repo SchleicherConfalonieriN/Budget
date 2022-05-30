@@ -1,0 +1,24 @@
+body{
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: brown;
+}
+
+.App{
+  margin: 0;
+  padding: 0;
+}
+
+
+.ListContainer{
+  width: auto;
+  border: solid black;
+  height: fit-content;
+  margin: 10px;
+}
+
+
+
+
