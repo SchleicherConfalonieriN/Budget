@@ -1,24 +1,41 @@
-body{
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-  align-items: center;
+body,html{
   background-color: brown;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
 }
 
 .App{
-  margin: 0;
-  padding: 0;
+  margin-top: 15%;
+  width: auto;
+  justify-content: center;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 
 .ListContainer{
+
   width: auto;
   border: solid black;
   height: fit-content;
   margin: 10px;
 }
 
+.PrimaryContainer{
+  
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: fit-content;
+  background-color: white;
+  border: solid black;
 
+}
 
 
