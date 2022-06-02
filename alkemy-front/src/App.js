@@ -15,8 +15,8 @@ function App() {
   
  <BrowserRouter>
       <Routes>
-            <Route path='/login' element={ <Login/>} />
-            <Route path='/' element={ <Home/>} />
+            <Route path='/' element={ <Login/>} />
+            <Route path='/home' element={ <Home/>} />
             <Route path='/create' element={ <CreateTransaction/>} />
             <Route path='/register' element={ <Register/>} />
             <Route path='/list' element={ <GetAllTransaction/>} />   
