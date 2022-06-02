@@ -2,8 +2,8 @@
 import axios from 'axios'
 import {useState,useEffect} from 'react'
 import React from 'react'
-import TransactionURL from '../../api/Transaction';
 
+const URL = 'http://localhost:8000/api/transaction/10'
 
 
 const Transaction10 =() =>{
@@ -17,9 +17,9 @@ const Transaction10 =() =>{
 
 const getTransactions = async () =>{
 
-    const res = await axios.get(TransactionURL.URL, {
+    const res = await axios.get(URL, {
         headers: {
-        'user-token': TransactionURL.Token
+        'user-token': JSON.parse(localStorage.getItem("apiData"))
         }
       }
     )

@@ -20,9 +20,9 @@ const Login = () =>{
 
 return (
 
-    <div >
-        <form onSubmit={create}>
+    <div className= "PrimaryContainer">
         <h2>Login</h2>
+        <form onSubmit={create}>
         <label>Email</label>    
         <input type={"text"} value={email} onChange={(e)=> SetEmail(e.target.value)}></input>
         <br></br>

@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react'
 import React from 'react'
 import TransactionURL from '../../api/Transaction';
 
+const URL = 'http://localhost:8000/api/transaction'
 
 const Balance = () =>{
     const[total, setTotal] = useState()
@@ -16,9 +17,9 @@ const Balance = () =>{
      let sum=0;
      parseFloat(sum)
  
-    const res = await axios.get(TransactionURL.URL, {
+    const res = await axios.get(URL, {
         headers: {
-        'user-token': TransactionURL.Token
+        'user-token': JSON.parse(localStorage.getItem("apiData"))
         }
       }
     );

@@ -3,7 +3,8 @@ import  axios from 'axios'
 import {useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import './CreateTransaction.css'
-import TransactionURL from '../../api/Transaction'
+
+const URL = 'http://localhost:8000/api/transaction/'
 
 
 const CreateTransaction = () =>{
@@ -16,9 +17,9 @@ const CreateTransaction = () =>{
 
     const create = async (e) =>{
         e.preventDefault()
-        axios.post(TransactionURL.URL,{Amount:amount, Description:description, Category:category, Type:type, User:user, Date:date},{
+        axios.post(URL,{Amount:amount, Description:description, Category:category, Type:type, User:user, Date:date},{
             headers: {
-            'user-token': TransactionURL.Token
+            'user-token': JSON.parse(localStorage.getItem("apiData"))
             }
           })
     }

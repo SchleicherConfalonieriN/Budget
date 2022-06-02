@@ -1,5 +1,4 @@
 import React from 'react'
-import "./Register.css";
 import axios from "axios";
 import {useState,useEffect} from 'react'
 
@@ -18,9 +17,9 @@ const Register = () => {
 
 return (
 
-    <div >
-        <form onSubmit={create}>
+    <div className= "PrimaryContainer">
         <h2>Register Form</h2>
+        <form onSubmit={create}>
         <label>Email</label>    
         <input type={"text"} value={email} onChange={(e)=> SetEmail(e.target.value)}></input>
         <br></br>

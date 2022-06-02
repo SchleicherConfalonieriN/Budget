@@ -2,9 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
 import {useState,useEffect} from 'react';
-import TransactionURL from '../../api/Transaction';
 
 
+const URL = 'http://localhost:8000/api/transaction/'
 
 const EditTransaction = () => {
 
@@ -20,71 +20,48 @@ const EditTransaction = () => {
 
     const create = async (e) =>{
         e.preventDefault()
-        axios.post(TransactionURL.URL1+id, {
+        axios.post(URL+id, {
             headers: {
-            'user-token': TransactionURL.Token
+            'user-token': JSON.parse(localStorage.getItem("apiData"))
             }
           });
     }
 
 return(
 
-    <div className='edit'>
+    <div className='PrimaryContainer'>
         <h2>Edit Transaction</h2>
-
-
+        
     <form onSubmit={create}>
+        <label>Amount</label>
+        <input
+            value={amount}
+            onChange={(e)=> setAmount(e.target.value)}
+            type='number'
+        />
+        <label>Description</label>
+        <input
+            value={description}
+            onChange={(e)=> setDescription(e.target.value)}
+            type='text'
 
-<div>
-<label>Amount</label>
-<input
-    value={amount}
-    onChange={(e)=> setAmount(e.target.value)}
-    type='number'
+        />
+        <label>Category</label>
+        <input
+            value={category}
+            onChange={(e)=> setCategory(e.target.value)}
+            type='text'
 
-/>
-
-<label>Description</label>
-<input
-    value={description}
-    onChange={(e)=> setDescription(e.target.value)}
-    type='text'
-
-/>
-
-<label>Category</label>
-<input
-    value={category}
-    onChange={(e)=> setCategory(e.target.value)}
-    type='text'
-
-/>
-
-<label>User</label>
-<input
-    value={user}
-    onChange={(e)=> setUser(e.target.value)}
-    type='number'
-
-/>
-
-
-<label>Date</label>
-<input
-    value={date}
-    onChange={(e)=> setDate(e.target.value)}
-    type='date'
-/>
-
-<button type= "submit"> New Transaction</button>
-
-</div>
-
-
+        />
+        <label>Date</label>
+        <input
+            value={date}
+            onChange={(e)=> setDate(e.target.value)}
+            type='date'
+        />
+        <button type= "submit"> New Transaction</button>
     </form>
-
-
-    </div>
+</div>
 )
 }
 
