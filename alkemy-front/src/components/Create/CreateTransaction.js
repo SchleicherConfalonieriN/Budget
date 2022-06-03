@@ -2,7 +2,7 @@ import React from 'react'
 import  axios from 'axios'
 import {useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import './CreateTransaction.css'
+
 
 const URL = 'http://localhost:8000/api/transaction/'
 
@@ -17,7 +17,7 @@ const CreateTransaction = () =>{
 
     const create = async (e) =>{
         e.preventDefault()
-        axios.post(URL,{Amount:amount, Description:description, Category:category, Type:type, User:user, Date:date},{
+        axios.post(URL,{Amount:amount, Description:description, Category:category, Type:type, Date:date},{
             headers: {
             'user-token': JSON.parse(localStorage.getItem("apiData"))
             }
@@ -26,7 +26,7 @@ const CreateTransaction = () =>{
 
 return(
 
-    <div className='Create'>
+    <div className='PrimaryContainer'>
         <h2>New Trasnaction</h2>
 
 
@@ -56,13 +56,6 @@ return(
 
 />
 
-<label>User</label>
-<input
-    value={user}
-    onChange={(e)=> setUser(e.target.value)}
-    type='number'
-
-/>
 
 <label>Transaction Type</label>
 <select   value={type} onChange={(e)=> setType(e.target.value)}>
@@ -85,7 +78,7 @@ return(
 
 </form>
 <div className='btnContainer'>
-<Link to={`/`}><button><h4>Home</h4></button></Link>
+<Link to={`/home`}><button><h4>Home</h4></button></Link>
 </div>
 </div>
 

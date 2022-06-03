@@ -9,7 +9,7 @@ const GetAllTransaction = () =>{
 
     return (
 
-    <div className='AllTransaction'>
+    <div className= "PrimaryContainer">
                   <h1>TObUdGeT</h1>
                   <h4>Transaction List</h4>
             <TransactionIncome/>

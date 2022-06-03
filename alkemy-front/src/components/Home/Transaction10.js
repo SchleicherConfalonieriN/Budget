@@ -16,13 +16,14 @@ const Transaction10 =() =>{
     },[])
 
 const getTransactions = async () =>{
-
+ console.log(JSON.parse(localStorage.getItem("apiData")))
     const res = await axios.get(URL, {
         headers: {
         'user-token': JSON.parse(localStorage.getItem("apiData"))
         }
       }
     )
+    console.log(res.data);
     setTransaction(res.data);
 }
 return (

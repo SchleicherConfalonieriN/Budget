@@ -14,8 +14,8 @@ const Login = () =>{
         e.preventDefault()
         axios.post(URL,{Email:email, Password:password})
         .then((res) => {     
-            localStorage.setItem("apiData", JSON.stringify(res.data))
-      });
+            localStorage.setItem("apiData",JSON.stringify(res.data))
+      }).then(window.location.assign('http://localhost:3000/home'));
     }
 
 return (

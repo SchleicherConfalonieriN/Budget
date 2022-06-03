@@ -15,5 +15,6 @@
   .btnContainer{
       display: flex;
       height: 40px;  
+      margin: 15px;
   }
 

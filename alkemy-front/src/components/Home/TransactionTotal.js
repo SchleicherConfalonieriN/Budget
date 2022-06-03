@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {useState,useEffect} from 'react'
 import React from 'react'
-import TransactionURL from '../../api/Transaction';
+
 
 const URL = 'http://localhost:8000/api/transaction'
 

@@ -13,12 +13,13 @@ const Register = () => {
     const create = async (e) =>{
         e.preventDefault()
         axios.post(URL,{Email:email, Password:password})
+        .then(window.location.assign('http://localhost:3000/'));
     }
 
 return (
 
     <div className= "PrimaryContainer">
-        <h2>Register Form</h2>
+        <h2>Register</h2>
         <form onSubmit={create}>
         <label>Email</label>    
         <input type={"text"} value={email} onChange={(e)=> SetEmail(e.target.value)}></input>
