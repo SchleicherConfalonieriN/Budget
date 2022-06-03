@@ -1,5 +1,5 @@
 import TransactionModel from "../models/TransactionModel.js"
-import jwt from 'jwt-simple';
+
 
 
 //CRUD Methods 
@@ -9,7 +9,10 @@ import jwt from 'jwt-simple';
 
 export const getAllTransaction = async (req,res) =>{
     try{
-        const transactions = await TransactionModel.findAll();
+        const transactions = await TransactionModel.findAll({  
+            where:{ 
+            User: req.userId}
+}); 
         res.json(transactions)
     } catch(error){
         res.json ({message :error.message})
@@ -22,10 +25,10 @@ export const get10Transaction = async (req,res)=>{
 
   
     try{   
-        console.log(req.userId) 
+console.log(req.userId);
         const transactions = await TransactionModel.findAll({  
             where:{ 
-            User: req.userId }
+            User: req.userId}
 }); 
     res.json(transactions);
 }
@@ -39,7 +42,9 @@ export const get10Transaction = async (req,res)=>{
 export const getTransactionById = async (req,res)=>{
     try{
 const transactions = await TransactionModel.findAll({ 
-        where:{ id:req.params.id }
+        where:{ id:req.params.id,
+                 User: req.userId 
+                }
 })
 
 res.json(transactions[0])
@@ -54,7 +59,8 @@ export const getAllIncome = async (req,res) =>{
     try{
         const transactions = await TransactionModel.findAll({
             where:{ 
-                Type:"Ingreso"}
+                Type:"Ingreso",
+                User: req.userId}
         });
         res.json(transactions)
     } catch(error){
@@ -67,7 +73,8 @@ export const getAllOutcome = async (req,res) =>{
     try{
         const transactions = await TransactionModel.findAll({
             where:{ 
-                Type:"Egreso"}
+                Type:"Egreso",
+                User: req.userId}
         });
         res.json(transactions)
     } catch(error){
@@ -82,7 +89,15 @@ export const getAllOutcome = async (req,res) =>{
 
 export const createTrasnaction= async (req,res)=>{
     try {
-        await TransactionModel.create(req.body)
+        await TransactionModel.create({
+
+          Amount:req.body.Amount,
+          Category:req.body.Category,
+          Description:req.body.Description,
+          User:req.userId,
+          Date:req.body.Date,
+          Type:req.body.Type
+        })
         res.json({"message":"registro creado correctamente"})
     } catch (error) {
 
@@ -98,7 +113,8 @@ export const createTrasnaction= async (req,res)=>{
 export const deleteTransaction = async (req, res) => {
     try {
         await TransactionModel.destroy({ 
-            where: { id : req.params.id }
+            where: { id : req.params.id,
+                User: req.userId }
         })
         res.json({
             "message":"Delete"
@@ -120,7 +136,8 @@ export const updateTransaction = async(req,res)=>{
     console.log(req.body.Amount);
     try{
         await TransactionModel.update(req.body,{ 
-                where:{ id: req.params.id }
+                where:{ id: req.params.id,
+                    User: req.userId  }
         }
         )
         res.json("updated")
@@ -128,4 +145,3 @@ export const updateTransaction = async(req,res)=>{
         res.json( {message: error.message} )
         }
         }
-        
