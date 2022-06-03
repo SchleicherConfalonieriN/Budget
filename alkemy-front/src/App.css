@@ -1,18 +1,8 @@
-body,html{
-  background-color: brown;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  justify-content: center;
-}
 
 .App{
-  margin-top: 15%;
-  width: auto;
-  justify-content: center;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  background-color: brown;
+  height: 100vh;
 }
 
 
@@ -25,17 +15,25 @@ body,html{
 }
 
 .PrimaryContainer{
-  
-  align-self: center;
+  height: 50vh;
+  width: 50vh;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: auto;
-  height: fit-content;
   background-color: white;
   border: solid black;
+  border-radius: 10px;
+  justify-content: center;
+  text-align: center;
+}
 
+input{
+  margin: 1vh;
 }
 
 
