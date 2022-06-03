@@ -4,10 +4,22 @@ import jwt from 'jwt-simple';
 
 
 
+//all users
+
+export const getAllUser = async (req,res) =>{
+    try{
+        const users = await UserModel.findAll();
+        res.json(user)
+    } catch(error){
+        res.json ({message :error.message})
+    }
+}
+
+
 const CreateToken = (user) => {
 
     const payload ={
-        usuarId : user.Id,
+        userId : user.Id,
         createdAt : moment().unix(),
         expiredAt : moment().add(5,'minutes').unix()
     };
