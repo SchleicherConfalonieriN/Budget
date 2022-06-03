@@ -1,4 +1,5 @@
 import TransactionModel from "../models/TransactionModel.js"
+import jwt from 'jwt-simple';
 
 
 //CRUD Methods 
@@ -18,7 +19,14 @@ export const getAllTransaction = async (req,res) =>{
 
 // read last 10 transactions 
 export const get10Transaction = async (req,res)=>{
-    try{const transactions = await TransactionModel.findAll({limit:10, order: [['createdAt', 'DESC']]}); 
+
+  
+    try{   
+        console.log(req.userId) 
+        const transactions = await TransactionModel.findAll({  
+            where:{ 
+            User: req.userId }
+}); 
     res.json(transactions);
 }
     catch(erro){
@@ -40,6 +48,36 @@ res.json( {message: error.message} )
 }
 }
 
+//get transaction income
+
+export const getAllIncome = async (req,res) =>{
+    try{
+        const transactions = await TransactionModel.findAll({
+            where:{ 
+                Type:"Ingreso"}
+        });
+        res.json(transactions)
+    } catch(error){
+        res.json ({message :error.message})
+    }
+}
+
+//get transaction outcome
+export const getAllOutcome = async (req,res) =>{
+    try{
+        const transactions = await TransactionModel.findAll({
+            where:{ 
+                Type:"Egreso"}
+        });
+        res.json(transactions)
+    } catch(error){
+        res.json ({message :error.message})
+    }
+}
+
+
+
+
 // create transaction
 
 export const createTrasnaction= async (req,res)=>{
@@ -53,19 +91,7 @@ export const createTrasnaction= async (req,res)=>{
 
 }
 
-// update transaction
 
-export const updateTransaction = async(req,res)=>{
-try {
-    await TransactionModel.update(req.body,{
-        where: {id:req.params.id}
-    })
-        res.json({"message":"transaction updated"})
-
-    }catch (error) {
-    res.json({message:error.message})
-}
-}
 
 
 //delete transaction
@@ -82,3 +108,24 @@ export const deleteTransaction = async (req, res) => {
     }
 
     }
+
+
+
+
+
+    // update transaction
+
+export const updateTransaction = async(req,res)=>{
+    
+    console.log(req.body.Amount);
+    try{
+        await TransactionModel.update(req.body,{ 
+                where:{ id: req.params.id }
+        }
+        )
+        res.json("updated")
+        } catch (error) {
+        res.json( {message: error.message} )
+        }
+        }
+        
