@@ -25,11 +25,10 @@ export const get10Transaction = async (req,res)=>{
 
   
     try{   
-console.log(req.userId);
+
         const transactions = await TransactionModel.findAll({  
-            where:{ 
-            User: req.userId}
-}); 
+            where:{ User: req.userId}
+},{limit:10, order: [['createdAt', 'DESC']]}); 
     res.json(transactions);
 }
     catch(erro){
@@ -42,9 +41,7 @@ console.log(req.userId);
 export const getTransactionById = async (req,res)=>{
     try{
 const transactions = await TransactionModel.findAll({ 
-        where:{ id:req.params.id,
-                 User: req.userId 
-                }
+        where:{ id:req.params.id}
 })
 
 res.json(transactions[0])
@@ -113,8 +110,7 @@ export const createTrasnaction= async (req,res)=>{
 export const deleteTransaction = async (req, res) => {
     try {
         await TransactionModel.destroy({ 
-            where: { id : req.params.id,
-                User: req.userId }
+            where: {id:req.params.id}
         })
         res.json({
             "message":"Delete"
@@ -133,12 +129,9 @@ export const deleteTransaction = async (req, res) => {
 
 export const updateTransaction = async(req,res)=>{
     
-    console.log(req.body.Amount);
     try{
         await TransactionModel.update(req.body,{ 
-                where:{ id: req.params.id,
-                    User: req.userId  }
-        }
+                where:{ id: req.body.id}}
         )
         res.json("updated")
         } catch (error) {

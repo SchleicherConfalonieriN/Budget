@@ -4,10 +4,10 @@ import cors from 'cors';
 import db from './db/db.js';
 // routes import
 import apiRouter from './routes/api.js';
-
+import cookieParser from "cookie-parser";
 
 const app = express()
-
+app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use('/api',apiRouter);
