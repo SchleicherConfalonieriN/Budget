@@ -12,9 +12,10 @@ const GetAllTransaction = () =>{
     <div className= "PrimaryContainer">
                   <h1>TObUdGeT</h1>
                   <h4>Transaction List</h4>
+                  <Button/>
             <TransactionIncome/>
             <TransactionOutcome/>
-            <Button/>
+          
     </div>)
 }
 

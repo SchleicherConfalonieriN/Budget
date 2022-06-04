@@ -1,9 +1,18 @@
+body{
+  background-color: brown;
+}
+
+
+
 
 .App{
-  position: relative;
-  background-color: brown;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  height: fit-content;
 }
+
 
 
 .ListContainer{
@@ -14,12 +23,15 @@
   margin: 10px;
 }
 
+.ListContainer>tr{
+  height: 4vh;
+}
+
 .PrimaryContainer{
-  height: 50vh;
-  width: 50vh;
-  -ms-transform: translate(-50%, -50%);
+  padding: 2vh;
+  height: fit-content;
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 100%;
   left: 50%;
   position: absolute;
   display: flex;
@@ -33,7 +45,44 @@
 }
 
 input{
-  margin: 1vh;
+  margin: 3vh;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 }
 
 
+
+.ListContainer>tr>th{
+  width: 100%;
+  padding: 15px;
+  margin-top: auto;
+}
+
+.ListTitle{
+  background-color: lightcoral;
+}
+
+tr>.Content{
+  border: 1px solid #74706F;
+  
+}
+
+
+th>button:hover{
+  background-color: black;
+  color: red;
+}
+
+th>a:hover{
+  color:coral ;
+ 
+}

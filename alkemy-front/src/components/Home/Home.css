@@ -1,20 +1,27 @@
 
-
 .Total{
     height: fit-content;
     width: fit-content;
 }
 
-
-.ListContainer>tr>th{
-    padding: 15px;
-    background-color: lightcoral;
-    margin-top: auto;
-  }
-
   .btnContainer{
-      display: flex;
-      height: 40px;  
-      margin: 15px;
+    display: flex;
   }
+
+.btnContainer>div{
+    width: fit-content;
+    margin: 10px;
+}
+
+div>button{
+    width:10vh;
+}
+
+a>button{
+    width:10vh;
+}
+
+
+
+
 

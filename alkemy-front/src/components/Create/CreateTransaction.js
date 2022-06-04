@@ -11,7 +11,6 @@ const CreateTransaction = () =>{
     const[amount, setAmount] = useState('')
     const[description, setDescription] = useState('')
     const[category, setCategory] = useState('')
-    const[user, setUser] = useState('')
     const[type, setType] = useState('')
     const[date, setDate] = useState('')
 
@@ -20,14 +19,15 @@ const CreateTransaction = () =>{
         axios.post(URL,{Amount:amount, Description:description, Category:category, Type:type, Date:date},{
             headers: {
             'user-token': JSON.parse(localStorage.getItem("apiData"))
+       
             }
-          })
+          }).then(window.location.assign('http://localhost:3000/home'))
     }
 
 return(
 
     <div className='PrimaryContainer'>
-        <h2>New Trasnaction</h2>
+        <h2>New Transaction</h2>
 
 
     <form onSubmit={create}>

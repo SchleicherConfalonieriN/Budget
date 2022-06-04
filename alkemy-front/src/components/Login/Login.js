@@ -27,7 +27,7 @@ return (
         <input type={"text"} value={email} onChange={(e)=> SetEmail(e.target.value)}></input>
         <br></br>
         <label>Password</label>    
-        <input type={"text"} value={password} onChange={(e)=> SetPassword(e.target.value)}></input>
+        <input type={"password"} value={password} onChange={(e)=> SetPassword(e.target.value)}></input>
         <br></br>
         <input type={"submit"}></input>
         </form>

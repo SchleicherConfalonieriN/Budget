@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import {useState,useEffect} from 'react';
 
 
@@ -15,12 +15,11 @@ const EditTransaction = () => {
     const[amount, setAmount] = useState("") 
     const[description, setDescription] = useState("")
     const[category, setCategory] = useState("")
-    const[user, setUser] = useState("")
     const[date, setDate] = useState("")
 
-    const create = async (e) =>{
+    const edit = async (e) =>{
         e.preventDefault()
-        axios.post(URL+id, {
+       await axios.put(`${URL}${id}`,{Amount:amount, Description:description,Category:category,Date:date},{
             headers: {
             'user-token': JSON.parse(localStorage.getItem("apiData"))
             }
@@ -32,7 +31,7 @@ return(
     <div className='PrimaryContainer'>
         <h2>Edit Transaction</h2>
         
-    <form onSubmit={create}>
+    <form onSubmit={edit}>
         <label>Amount</label>
         <input
             value={amount}
@@ -59,8 +58,10 @@ return(
             onChange={(e)=> setDate(e.target.value)}
             type='date'
         />
-        <button type= "submit"> New Transaction</button>
+    <button type= "submit">Edit</button>
     </form>
+
+    <Link to={`/home`}><button><h4>Home</h4></button></Link>
 </div>
 )
 }

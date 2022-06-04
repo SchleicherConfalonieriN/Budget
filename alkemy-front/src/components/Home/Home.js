@@ -13,10 +13,11 @@ const Home = () =>{
     return (
     
     <div className='PrimaryContainer'>
-         <h1>TObUdGeT</h1>    
+         <h1>TObUdGeT</h1>
+        <ButtonHome/>    
         <TransactionTotal/>
         <Transaction10/>
-        <ButtonHome/>
+       
     </div>)
 }
 
